@@ -10,17 +10,17 @@
 <ion-content padding>
 
 
-        <ion-card>
+        <ion-card *ngFor="let item of retrievedPosts">
             <img src="assets/shapes.svg">
           <ion-item>
             <ion-icon name="car" slot="start"></ion-icon>
-            <ion-label>Vezzel XXX</ion-label>
+            <ion-label>{{ item.title }}</ion-label>
             <ion-button fill="outline" slot="end">View</ion-button>
           </ion-item>
         
           <ion-card-content>
-            This is content, without any paragraph or header tags,
-            within an ion-card-content element.
+              <span>RS: {{ item.price }}</span> <br>
+            {{ item.description }}
           </ion-card-content>
         </ion-card>
 
