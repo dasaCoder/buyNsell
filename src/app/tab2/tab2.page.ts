@@ -1,4 +1,15 @@
 import { Component } from '@angular/core';
+import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
+
+export interface Post {
+  id?: string;
+  title: string;
+  description: string;
+  price: string;
+  model: string;
+}
 
 @Component({
   selector: 'app-tab2',
@@ -7,17 +18,28 @@ import { Component } from '@angular/core';
 })
 export class Tab2Page {
 
+  private postsCollection: AngularFirestoreCollection<Post>;
+  private posts: Observable<Post[]>;
   
   title;
   price;
   description;
   model;
   
-  constructor(){}
+  constructor(db: AngularFirestore){
+    this.postsCollection = db.collection<Post>('posts');
+  }
 
   processForm(event) {
     //event.preventDefault();
+    let post = {
+      title: this.title,
+      price: this.price,
+      description: this.description,
+      model: this.model
+    }
     console.log(this.title,this.description);
+    this.postsCollection.add(post);
   }
   
  handleTitle(event) {
