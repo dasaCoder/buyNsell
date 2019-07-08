@@ -1,7 +1,37 @@
 <ion-header>
     <ion-toolbar>
         <ion-title>
-            Chats
+            Post an Add
         </ion-title>
     </ion-toolbar>
+    <ion-content fullscreen>
+            <form >
+              <ion-list lines="full" class="ion-no-margin ion-no-padding">
+                <ion-item>
+                  <ion-label position="stacked">Title <ion-text color="danger">*</ion-text></ion-label>
+                  <ion-input required type="text" id="title" name="title" [(ngModel)]="title" (change)="handleTitle(event)"></ion-input>
+                </ion-item>
+      
+                <ion-item>
+                  <ion-label position="stacked">Model <ion-text color="danger">*</ion-text></ion-label>
+                  <ion-input required type="text" id="model" name="model" [(ngModel)]="model" (change)="handleModel(event)"></ion-input>
+                </ion-item>
+      
+      
+                <ion-item>
+                  <ion-label position="stacked">Description</ion-label>
+                  <ion-textarea id="description" name="description" [(ngModel)]="description" (change)="handleDes(event)"></ion-textarea>
+                </ion-item>
+              </ion-list>
+
+              <ion-item>
+                  <ion-label position="stacked">Price <ion-text color="danger">*</ion-text></ion-label>
+                  <ion-input required type="text" id="price" name="price" [(ngModel)]="price" (change)="handlePrice(event)"></ion-input>
+                </ion-item>
+      
+              <div class="ion-padding">
+                <ion-button (click)="processForm(event)" expand="block" type="submit" class="ion-no-margin">Create account</ion-button>
+              </div>
+            </form>
+          </ion-content>
 </ion-header>
