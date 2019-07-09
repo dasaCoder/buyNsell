@@ -10,7 +10,7 @@
 <ion-content padding>
 
 
-        <ion-card *ngFor="let item of retrievedPosts">
+        <ion-card *ngFor="let item of (retrievedPosts | async)">
             <img src="assets/shapes.svg">
           <ion-item>
             <ion-icon name="car" slot="start"></ion-icon>

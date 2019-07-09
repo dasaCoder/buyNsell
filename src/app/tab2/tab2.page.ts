@@ -3,6 +3,8 @@ import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/fire
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
+import { FileChooser } from '@ionic-native/file-chooser/ngx';
+
 export interface Post {
   id?: string;
   title: string;
@@ -26,7 +28,7 @@ export class Tab2Page {
   description;
   model;
   
-  constructor(db: AngularFirestore){
+  constructor(db: AngularFirestore, private fileChooser: FileChooser){
     this.postsCollection = db.collection<Post>('posts');
   }
 
@@ -40,6 +42,12 @@ export class Tab2Page {
     }
     console.log(this.title,this.description);
     this.postsCollection.add(post);
+  }
+
+  chooseFile() {
+    this.fileChooser.open()
+        .then(uri => console.log(uri))
+        .catch(e => console.log(e));
   }
   
  handleTitle(event) {

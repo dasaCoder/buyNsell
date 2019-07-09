@@ -28,6 +28,13 @@
                   <ion-label position="stacked">Price <ion-text color="danger">*</ion-text></ion-label>
                   <ion-input required type="text" id="price" name="price" [(ngModel)]="price" (change)="handlePrice(event)"></ion-input>
                 </ion-item>
+
+                <ion-item>
+                    <ion-tab-button (click)="chooseFile()">
+                        <ion-icon name="camera"></ion-icon>
+                        <ion-label>Upload</ion-label>
+                    </ion-tab-button>
+                </ion-item>
       
               <div class="ion-padding">
                 <ion-button (click)="processForm(event)" expand="block" type="submit" class="ion-no-margin">Post Add</ion-button>

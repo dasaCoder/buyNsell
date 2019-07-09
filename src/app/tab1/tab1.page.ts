@@ -7,13 +7,7 @@ import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/fire
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
-export interface Post {
-  id?: string;
-  title: string;
-  description: string;
-  price: string;
-  model: string;
-}
+import { Post, PostService } from './posts.service';
 
 @Component({
   selector: 'app-tab1',
@@ -22,39 +16,21 @@ export interface Post {
 })
 export class Tab1Page  implements OnInit {
 
-  private postsCollection: AngularFirestoreCollection<Post>;
-  private posts: Observable<Post[]>;
   private retrievedPosts: Observable<Post[]>;
 
   constructor(
     private aut: AngularFireAuth,
     private router: Router,
-    private db: AngularFirestore) { 
-      this.postsCollection = db.collection<Post>('posts');
-      
-      this.posts = this.postsCollection.snapshotChanges().pipe(
-        map(actions => {
-          return actions.map(a => {
-            const data = a.payload.doc.data();
-            const id = a.payload.doc.id;
-            return { id, ...data };
-          });
-        })
-      );
-
-      //console.log(this.posts);  
+    private postServie: PostService) { 
+     
     }
 
     ngOnInit() {
-      this.getPosts();
+        this.retrievedPosts = this.postServie.getPosts();
+;
     }
 
-    getPosts() {
-      this.posts.subscribe(data => {
-        console.log("tat",data);
-        this.retrievedPosts = data;
-      })
-    }
+
 
   async signOut() {
     const res = await this.aut.auth.signOut();

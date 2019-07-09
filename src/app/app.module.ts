@@ -10,6 +10,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
+import { FileChooser } from '@ionic-native/file-chooser/ngx';
 
 
 //firebase
@@ -30,6 +31,7 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
     StatusBar,
     SplashScreen,
     AngularFirestore,
+    FileChooser,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]

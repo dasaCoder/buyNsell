@@ -1,2 +1,9 @@
 /node_modules
 /src/app/firebase.ts
+/platforms/android/app/src/main/assets
+
+platforms/android/app/src/main/res/drawable-port-hdpi/
+
+platforms/android/
+
+plugins/cordova-plugin-whitelist/
