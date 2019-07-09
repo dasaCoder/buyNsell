@@ -30,7 +30,10 @@
                 </ion-item>
 
                 <ion-item>
-                    <ion-tab-button (click)="chooseFile()">
+                        <label>
+                                <input type="file" (change)="detectFiles($event)">
+                             </label>
+                    <ion-tab-button (click)="uploadFile()" [disabled]="!selectedFiles">
                         <ion-icon name="camera"></ion-icon>
                         <ion-label>Upload</ion-label>
                     </ion-tab-button>

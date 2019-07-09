@@ -1,7 +1,14 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument, DocumentReference } from '@angular/fire/firestore';
+import {
+    AngularFireStorage,
+    AngularFireUploadTask
+  } from '@angular/fire/storage';
+
 import { map, take } from 'rxjs/operators';
 import { Observable } from 'rxjs';
+
+import * as firebase from 'firebase';
 
 export interface Post {
     id?: string;
@@ -9,6 +16,20 @@ export interface Post {
     description: string;
     price: string;
     model: string;
+  }
+
+  export class Upload {
+
+    $key: string;
+    file:File;
+    name:string;
+    url:string;
+    progress:number;
+    createdAt: Date = new Date();
+  
+    constructor(file:File) {
+      this.file = file;
+    }
   }
 
 
@@ -39,3 +60,41 @@ export class PostService {
     return this.posts;
     }
 }
+
+export class UploadService {
+
+    constructor() { }
+  
+    private basePath:string = '/images';
+    //uploads: AngularFireList<Upload[]>;
+  
+    pushUpload(upload: Upload) {
+      let storageRef = firebase.storage().ref();
+      let uploadTask = storageRef.child(`${this.basePath}/${upload.file.name}`).put(upload.file);
+  
+      uploadTask.on(firebase.storage.TaskEvent.STATE_CHANGED,
+        (snapshot) =>  {
+          // upload in progress
+          upload.progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100
+        },
+        (error) => {
+          // upload failed
+          console.log(error)
+        },
+        () => {
+          // upload success
+          upload.url = uploadTask.snapshot.downloadURL
+          upload.name = upload.file.name
+          return this.saveFileData(upload)
+        }
+      );
+    }
+  
+  
+  
+    // Writes the file details to the realtime db
+    private saveFileData(upload: Upload) {
+        console.log("upload det",upload);
+      //this.db.list(`${this.basePath}/`).push(upload);
+    }
+  }

@@ -17,6 +17,7 @@ import { FileChooser } from '@ionic-native/file-chooser/ngx';
 import Config from './firebase';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuthModule } from '@angular/fire/auth';
+import { UploadService } from './tab1/posts.service';
 
 @NgModule({
   declarations: [AppComponent],
@@ -32,6 +33,7 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
     SplashScreen,
     AngularFirestore,
     FileChooser,
+    UploadService,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]

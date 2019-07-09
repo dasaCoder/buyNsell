@@ -4,6 +4,6 @@
 
 platforms/android/app/src/main/res/drawable-port-hdpi/
 
-platforms/android/
+platforms/
 
-plugins/cordova-plugin-whitelist/
+plugins/
