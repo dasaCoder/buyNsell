@@ -1,6 +1,6 @@
 <ion-header>
     <ion-toolbar>
-        <ion-title>
+        <ion-title style="padding-top:10px">
             Buy&Sell
         </ion-title>
         <button class="btn btn-primary" (click)="signOut()"  style="float:right"><ion-icon name="close"></ion-icon> Sign Out</button>
@@ -21,7 +21,7 @@
           <ion-card-content>
               <span>RS: {{ item.price }}</span> <br>
             {{ item.description }} <br>
-            <ion-button fill="outline" slot="end">View</ion-button>
+            {{item.category}}<ion-button fill="outline" slot="end">View</ion-button>
           </ion-card-content>
         </ion-card>
 

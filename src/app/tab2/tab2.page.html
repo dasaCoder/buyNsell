@@ -17,6 +17,15 @@
                   <ion-input required type="text" id="model" name="model" [(ngModel)]="model" (change)="handleModel(event)"></ion-input>
                 </ion-item>
       
+                <ion-item>
+                  <ion-label>Category</ion-label>
+                  <ion-select placeholder="Select One" (ionChange)="onChange($event)">
+                    <ion-select-option value="Car">Car</ion-select-option>
+                    <ion-select-option value="Van">Van</ion-select-option>
+                    <ion-select-option value="Three wheel">Three wheel</ion-select-option>
+                    <ion-select-option value="Jeep">Jeep</ion-select-option>
+                  </ion-select>
+                </ion-item>
       
                 <ion-item>
                   <ion-label position="stacked">Description</ion-label>
@@ -33,14 +42,15 @@
                         <label>
                                 <input type="file" (change)="detectFiles($event)">
                              </label>
-                    <ion-tab-button (click)="uploadFile()" [disabled]="!selectedFiles">
+                             
+                    <!-- <ion-tab-button (click)="uploadFile()" [disabled]="!selectedFiles">
                         <ion-icon name="camera"></ion-icon>
                         <ion-label>Upload</ion-label>
-                    </ion-tab-button>
+                    </ion-tab-button> -->
                 </ion-item>
       
               <div class="ion-padding">
-                <ion-button (click)="processForm(event)" expand="block" type="submit" class="ion-no-margin">Post Add</ion-button>
+                <ion-button (click)="processForm(event)" [disabled]="!selectedFiles" expand="block" type="submit" class="ion-no-margin">Post Add</ion-button>
               </div>
             </form>
           </ion-content>

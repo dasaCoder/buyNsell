@@ -30,6 +30,7 @@ export class Tab2Page {
   price;
   description;
   model;
+  category;
 
   selectedFiles:FileList;
   currentUpload: Upload;
@@ -43,13 +44,15 @@ export class Tab2Page {
   }
 
   processForm(event) {
+    this.uploadFile();
     //event.preventDefault();
     let post = {
       title: this.title,
       price: this.price,
       description: this.description,
       model: this.model,
-      file: this.selectedFiles.item(0).name
+      file: this.selectedFiles.item(0).name,
+      category: this.category
     }
     console.log(this.title,this.description);
     this.postsCollection.add(post);
@@ -67,6 +70,11 @@ export class Tab2Page {
   detectFiles(event) {
     console.log("target",event.target.files);
     this.selectedFiles = event.target.files;
+}
+
+onChange(item) {
+  console.log("ite",item.detail.value);
+  this.category = item.detail.value;
 }
 
   uploadFile() {
