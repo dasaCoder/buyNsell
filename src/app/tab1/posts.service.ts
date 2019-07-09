@@ -84,6 +84,7 @@ export class UploadService {
         () => {
           // upload success
           upload.url = uploadTask.snapshot.downloadURL
+          console.log("upload det",uploadTask.snapshot.downloadURL);
           upload.name = upload.file.name
           return this.saveFileData(upload)
         }
@@ -94,7 +95,7 @@ export class UploadService {
   
     // Writes the file details to the realtime db
     private saveFileData(upload: Upload) {
-        console.log("upload det",upload);
+        
       //this.db.list(`${this.basePath}/`).push(upload);
     }
   }
