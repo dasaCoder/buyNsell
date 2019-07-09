@@ -1,0 +1,30 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-title style="padding-top:10px">
+            Buy&Sell
+
+            <ion-icon name="arrow-back" style="float: right;" (click)="bckClick()"></ion-icon>
+        </ion-title>
+        
+    </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+
+    <ion-card *ngIf="post">
+        <img src="https://firebasestorage.googleapis.com/v0/b/sell-and-buy-aae28.appspot.com/o/images%2F{{ post.file }}?alt=media&token=f7e8165f-d040-45b6-94a7-563cad700a53">
+      <ion-item>
+        <ion-icon name="car" slot="start"></ion-icon>
+        <ion-label>{{ post.title }}</ion-label>
+        
+      </ion-item>
+    
+      <ion-card-content>
+          <span> <ion-icon name="cash"></ion-icon>  RS: {{ post.price }}</span> <br>
+        {{ post.description }} <br>
+        {{post.category}}
+      </ion-card-content>
+    </ion-card>
+
+
+</ion-content>

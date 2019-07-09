@@ -59,6 +59,16 @@ export class PostService {
   getPosts(): Observable<Post[]> {
     return this.posts;
     }
+
+    getOnePost(id) {
+        return this.postsCollection.doc(id).valueChanges().pipe(
+            take(1),
+            map(idea => {
+              //idea.id = id;
+              return idea
+            })
+          );
+    }
 }
 
 export class UploadService {

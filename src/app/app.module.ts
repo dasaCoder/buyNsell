@@ -18,9 +18,10 @@ import Config from './firebase';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { UploadService } from './tab1/posts.service';
+import { PostDetailsComponent } from './post-details/post-details.component';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, PostDetailsComponent],
   entryComponents: [],
   imports: [BrowserModule,
     IonicModule.forRoot(),

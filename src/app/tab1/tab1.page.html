@@ -21,7 +21,7 @@
           <ion-card-content>
               <span>RS: {{ item.price }}</span> <br>
             {{ item.description }} <br>
-            {{item.category}}<ion-button fill="outline" slot="end">View</ion-button>
+            {{item.category}}<ion-button fill="outline" slot="end" [routerLink]="['/details',item.id]">View</ion-button>
           </ion-card-content>
         </ion-card>
 

@@ -7,8 +7,10 @@ import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/fire
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
-import { Post, PostService } from './posts.service';
+import { ModalController } from '@ionic/angular';
 
+import { Post, PostService } from './posts.service';
+import { Tab2Page } from '../tab2/tab2.page';
 @Component({
   selector: 'app-tab1',
   templateUrl: 'tab1.page.html',
@@ -21,16 +23,22 @@ export class Tab1Page  implements OnInit {
   constructor(
     private aut: AngularFireAuth,
     private router: Router,
-    private postServie: PostService) { 
+    private postServie: PostService,
+    public modalController: ModalController) { 
      
     }
 
     ngOnInit() {
         this.retrievedPosts = this.postServie.getPosts();
-;
     }
 
+    goAnOtherPage(post) {
 
+    }
+
+    test(item) {
+      console.log("t",item);
+    }
 
   async signOut() {
     const res = await this.aut.auth.signOut();
